@@ -218,7 +218,7 @@ export class DashboardPacienteComponent implements OnInit {
   reservarTurnoDirecto() {
     this.http.post('https://backend-turnos-1.onrender.com/api/turnos/reservar', {
       turnoId: this.turnoParaPagar._id,
-      pacienteId: this.ficha._id,
+      pacienteId: this.ficha.userId, // <- usa userId aquí si es necesario
       obraSocial: this.obraSocialSeleccionada
     }).subscribe({
       next: () => {
@@ -231,6 +231,7 @@ export class DashboardPacienteComponent implements OnInit {
       }
     });
   }
+
 
   /**
    * Envía la pregunta del paciente al asistente virtual (IA).
