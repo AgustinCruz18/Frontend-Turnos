@@ -21,13 +21,13 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-  {
-    "glob": "**/*",
-    "input": "src",
-    "output": "/"
-  },
-  "src/favicon.ico"
-],
+            {
+              "glob": "**/*",
+              "input": "src",
+              "output": "/"
+            },
+              "src/favicon.ico"
+            ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
