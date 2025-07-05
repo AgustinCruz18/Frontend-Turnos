@@ -90,7 +90,7 @@ export class DashboardPacienteComponent implements OnInit {
   obtenerDescuento(obraSocial: string): number {
     switch (obraSocial) {
       case 'OSDE': return 1;
-      case 'Swiss Medical': return 0.25;
+      case 'Swiss Medical': return 0.998;
       case 'IOSFA': return 0.2;
       case 'Otra': return 0.1;
       case 'Particular': return 0; // Sin descuento para "Particular"
