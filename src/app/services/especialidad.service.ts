@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class EspecialidadService {
-  private apiUrl = 'http://localhost:5000/api/especialidades';
+  private apiUrl = 'https://backend-turnos-1.onrender.com/api/especialidades';
 
   constructor(private http: HttpClient) { }
 

@@ -38,7 +38,7 @@ export class DatosPersonalesComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id') || '';
 
-    this.http.get<any>(`http://localhost:5000/api/ficha/${this.userId}`).subscribe({
+    this.http.get<any>(`https://backend-turnos-1.onrender.com/api/ficha/${this.userId}`).subscribe({
       next: (data) => {
         if (data) {
           this.ficha = data;
@@ -132,7 +132,7 @@ export class DatosPersonalesComponent implements OnInit {
       });
     }
 
-    this.http.post('http://localhost:5000/api/ficha', fichaData).subscribe({
+    this.http.post('https://backend-turnos-1.onrender.com/api/ficha', fichaData).subscribe({
       next: () => {
         this.mensajeModal = this.esNuevaFicha
           ? 'Ficha guardada correctamente.'
@@ -148,7 +148,7 @@ export class DatosPersonalesComponent implements OnInit {
       }
     });
   }
-  
+
   mostrarModalConFocoSeguro(redirigir: boolean = false): void {
     const modalElement = document.getElementById('confirmModal');
     const submitBtn = document.querySelector('button[type="submit"]') as HTMLElement;

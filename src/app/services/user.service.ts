@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private apiUrl = 'http://localhost:5000/api/auth';
+  private apiUrl = 'https://backend-turnos-1.onrender.com/api/auth';
 
   constructor(private http: HttpClient) { }
 

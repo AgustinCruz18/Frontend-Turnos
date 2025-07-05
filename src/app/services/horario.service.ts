@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class HorarioService {
-  private apiUrl = 'http://localhost:5000/api/horarios';
+  private apiUrl = 'https://backend-turnos-1.onrender.com/api/horarios';
 
   constructor(private http: HttpClient) { }
 

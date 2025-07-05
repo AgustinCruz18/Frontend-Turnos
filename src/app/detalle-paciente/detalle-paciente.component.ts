@@ -17,17 +17,17 @@ export class DetallePacienteComponent {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id') || '';
-    this.http.get<any>(`http://localhost:5000/api/ficha/${this.userId}`).subscribe({
+    this.http.get<any>(`https://backend-turnos-1.onrender.com/api/ficha/${this.userId}`).subscribe({
       next: (data) => {
         this.ficha = data;
       },
       error: (err) => {
         console.error('Error al cargar la ficha:', err);
-      } 
+      }
     });
   }
 

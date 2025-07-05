@@ -49,7 +49,7 @@ export class DashboardPacienteComponent implements OnInit {
 
   ngOnInit() {
     this.idUsuario = this.route.snapshot.paramMap.get('id') ?? '';
-    this.http.get<any>(`http://localhost:5000/api/ficha/${this.idUsuario}`).subscribe({
+    this.http.get<any>(`https://backend-turnos-1.onrender.com/api/ficha/${this.idUsuario}`).subscribe({
       next: (ficha) => {
         if (ficha) {
           this.ficha = ficha;
@@ -102,7 +102,7 @@ export class DashboardPacienteComponent implements OnInit {
    * Carga las especialidades médicas desde el backend.
    */
   cargarEspecialidades() {
-    this.http.get<any[]>('http://localhost:5000/api/especialidades').subscribe({
+    this.http.get<any[]>('https://backend-turnos-1.onrender.com/api/especialidades').subscribe({
       next: data => this.especialidades = data,
       error: err => console.error('Error cargando especialidades', err)
     });
@@ -112,7 +112,7 @@ export class DashboardPacienteComponent implements OnInit {
    * Carga los médicos filtrados por la especialidad seleccionada.
    */
   cargarMedicos() {
-    this.http.get<any[]>('http://localhost:5000/api/medicos').subscribe({
+    this.http.get<any[]>('https://backend-turnos-1.onrender.com/api/medicos').subscribe({
       next: data => {
         this.medicos = data.filter(m => m.especialidad?._id === this.especialidadSeleccionada);
         this.turnos = []; // Limpia los turnos al cambiar de médico
@@ -191,7 +191,7 @@ export class DashboardPacienteComponent implements OnInit {
     }
 
     // Llamada al backend para generar el link de pago de Mercado Pago
-    this.http.post<any>('http://localhost:5000/api/mercadopago/pago', {
+    this.http.post<any>('https://backend-turnos-1.onrender.com/api/mercadopago/pago', {
       idTurno,
       idMedico,
       idEspecialidad,
@@ -225,7 +225,7 @@ export class DashboardPacienteComponent implements OnInit {
     this.mensajes.push({ origen: 'paciente', texto: mensajeUsuario }); // Agrega el mensaje del usuario
     this.pregunta = ''; // Limpia el input
 
-    this.http.post<any>('http://localhost:5000/api/ia', { pregunta: mensajeUsuario }).subscribe({
+    this.http.post<any>('https://backend-turnos-1.onrender.com/api/ia', { pregunta: mensajeUsuario }).subscribe({
       next: res => {
         this.mensajes.push({ origen: 'ia', texto: res.respuesta }); // Agrega la respuesta de la IA
       },

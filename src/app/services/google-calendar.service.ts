@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class GoogleCalendarService {
 
-  private apiUrl = 'http://localhost:5000'; // URL de tu backend
+  private apiUrl = 'https://backend-turnos-1.onrender.com'; // URL de tu backend
 
   constructor(private http: HttpClient) { }
 
