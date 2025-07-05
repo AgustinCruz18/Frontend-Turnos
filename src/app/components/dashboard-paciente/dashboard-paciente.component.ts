@@ -179,7 +179,8 @@ export class DashboardPacienteComponent implements OnInit {
     const idEspecialidad = this.especialidadSeleccionada;
     const obraSocial = obraSocialNombre || 'Particular'; // Asegura un valor por defecto
     //const email = this.ficha?.email || 'test@email.com'; // Email del pagador, con fallback
-    const email = 'test_user_704263090@testuser.com'; // ✅ Email del usuario comprador de prueba
+    const email = this.ficha?.email || 'paciente@email.com';
+    // ✅ Email del usuario comprador de prueba
 
     console.log("Enviando al backend:", {
       idTurno, idMedico, idEspecialidad, obra_social: obraSocial, payer_email: email, precio: this.precioConDescuento
