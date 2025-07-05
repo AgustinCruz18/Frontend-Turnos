@@ -203,15 +203,31 @@ export class DashboardPacienteComponent implements OnInit {
       next: (res) => {
         if (res.init_point) {
           localStorage.setItem('turnoAPagar', JSON.stringify(this.turnoParaPagar));
-          window.location.href = res.init_point; // Redirige al usuario al portal de pago
-          this.mostrarFormularioReserva = false; // Oculta el formulario después de la redirección
+          window.location.href = res.init_point;
         } else {
-          this.mensaje = 'No se pudo generar el link de pago.';
+          // Si no hay link de pago porque es 100% cubierto
+          this.reservarTurnoDirecto();
         }
       },
       error: (err) => {
         console.error(err);
         this.mensaje = 'Error al generar link de pago.';
+      }
+    });
+  }
+  reservarTurnoDirecto() {
+    this.http.post('https://backend-turnos-1.onrender.com/api/turnos/reservar', {
+      turnoId: this.turnoParaPagar._id,
+      pacienteId: this.ficha._id,
+      obraSocial: this.obraSocialSeleccionada
+    }).subscribe({
+      next: () => {
+        this.mensaje = 'Turno reservado automáticamente (sin pago).';
+        localStorage.removeItem('turnoAPagar');
+        this.mostrarFormularioReserva = false;
+      },
+      error: () => {
+        this.mensaje = 'Error al reservar turno automáticamente.';
       }
     });
   }
